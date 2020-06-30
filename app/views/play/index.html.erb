@@ -1,9 +1,37 @@
+
+<% content_for :for_head do %>
+
+<% @card_urls = [] %>
+<% @cards_for_this_game.each do |card| %>
+<% @card_urls.push(url_for(card.card_image)) %>
+<% end %>
+
+<script>
+    var card_array = <%= raw @card_urls.to_json %>
+    var loop = <%= @game.loop %>
+</script>
+
+
+
+<% end %>
+
+
+
 <h1>Playing <%= @game.title %> - Difficulty: <%= @difficulty_mode.name %></h1>
 
+<div>
+    Cards in deck:<span id="cards-in-deck"></span> Discarded:<span id="cards-discarded"></span>
+</div>
 
-<% @cards_for_this_game.each do |card| %>
-  <p>
-     
-    <img src="<%=(url_for(card.card_image))%>">
-  </p>
-<% end %>
+<div id="ppp"></div>
+<div id="card-div"><img id="card" src=""/></div>
+
+<button id="draw-card-button">Draw a Card</button>
+
+
+<br>
+
+
+<%= javascript_pack_tag 'cards' %>
+
+

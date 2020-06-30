@@ -11,6 +11,8 @@ class PlayController < ApplicationController
         @deck_selections.each do |deck_selection|
             @cards_for_this_game.push(*deck_selection.deck.cards)
         end
-            
     end
+    
+    
+    
 end
