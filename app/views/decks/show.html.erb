@@ -1,0 +1,37 @@
+<h1>Deck</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @deck.name %>
+</p>
+
+<p>
+  <strong>Number of cards in this deck:</strong>
+  <%= @deck.cards.length %>
+</p>
+
+<h1>New Card</h1>
+
+<%= form_with scope: :card, url: game_deck_cards_path(:deck_id => @deck.id, :game_id => @deck.game_id), local: true do |form| %>
+
+
+
+  <p>
+    <%= form.label "Card Image" %><br>
+    <%= form.file_field :card_image %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<h2>Cards:</h2>
+<% @deck.cards.each do |card| %>
+  <p>
+    <img src="<%=(url_for(card.card_image))%>">
+  </p>
+<% end %>
+
+
+

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  text: MyText
+  number_of_cards: 1
+  loop: false
+
+two:
+  title: MyString
+  text: MyText
+  number_of_cards: 1
+  loop: false

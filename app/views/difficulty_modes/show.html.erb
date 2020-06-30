@@ -1,0 +1,57 @@
+<h1>Difficulty Mode</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @difficulty_mode.name %>
+</p>
+
+
+<h2>Deck selections:</h2>
+<% @difficulty_mode.deck_selections.each do |deck_selection| %>
+<p>
+  <strong>Deck:</strong>
+  <%= deck_selection.deck.name %>
+</p>
+ 
+<p>
+  <strong>Number of cards:</strong>
+  <%= deck_selection.number_of_cards %>
+</p>
+<% end %>
+
+
+
+<h1>New Deck Selection</h1>
+
+<%= form_with scope: :deck_selection, url: game_difficulty_mode_deck_selections_path(:difficulty_mode_id => @difficulty_mode.id, :game_id => @difficulty_mode.game_id), local: true do |form| %>
+
+  <% if @difficulty_mode.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@difficulty_mode.errors.count, "error") %> prohibited
+        this deck selection from being saved:
+      </h2>
+      <ul>
+        <% @difficulty_mode.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label "Deck" %><br>
+    <% @decks = Game.find(@difficulty_mode.game_id).decks %>
+    <% options = options_from_collection_for_select(@decks, 'id', 'name') %>
+    <%= form.select :deck_id,  options %>
+  </p>
+
+  <p>
+    <%= form.label "Number of cards to pick from deck" %><br>
+    <%= form.number_field :number_of_cards %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

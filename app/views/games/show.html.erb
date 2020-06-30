@@ -1,0 +1,61 @@
+<p>
+  <strong>Title:</strong>
+  <%= @game.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @game.text %>
+</p> 
+<p>
+    
+  <strong>Loop:</strong>
+  <%= @game.loop %>
+</p> 
+
+<p>
+  <strong>Number of Cards:</strong>
+  <%= @game.number_of_cards == 0 ? "All" : @game.number_of_cards %>
+</p>
+
+<h2>Decks:</h2>
+<% @game.decks.each do |deck| %>
+  <p>
+    <strong>Name:</strong>
+    <%= link_to deck.name, game_deck_path(:game_id => @game.id, :id => deck.id) %>
+  </p>
+ 
+<% end %>
+
+
+<h2>Add a deck:</h2>
+<%= form_with(model: [ @game, @game.decks.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<h2>Difficulty Modes:</h2>
+<% @game.difficulty_modes.each do |difficulty_mode| %>
+  <p>
+    <strong>Name:</strong>
+      <%= link_to difficulty_mode.name, game_difficulty_mode_path(:game_id => @game.id, :id => difficulty_mode.id) %>
+  </p>
+ 
+<% end %>
+
+
+<h2>Add a difficulty mode:</h2>
+<%= form_with(model: [ @game, @game.difficulty_modes.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
