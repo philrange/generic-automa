@@ -8,7 +8,7 @@
   <p>
     <li>
         <%= game.title %> - <%= game.text %>
-        <%# link_to 'Play', select_difficulty_path(:game_id => game.id) %>
+        <%= link_to 'Play', game_select_difficulty_index_path(:game_id => game.id) %>
     </li>
   </p>
  

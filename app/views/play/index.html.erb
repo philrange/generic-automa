@@ -1,0 +1,9 @@
+<h1>Playing <%= @game.title %> - Difficulty: <%= @difficulty_mode.name %></h1>
+
+
+<% @cards_for_this_game.each do |card| %>
+  <p>
+     
+    <img src="<%=(url_for(card.card_image))%>">
+  </p>
+<% end %>
