@@ -28,6 +28,6 @@ class GamesController < ApplicationController
      
 private
   def game_params
-    params.require(:game).permit(:title, :text, :loop, :number_of_cards, user: current_user)
+    params.require(:game).permit(:title, :text, :loop, :number_of_cards, :user_id)
   end
 end

@@ -40,6 +40,8 @@
     <%= form.radio_button :loop, 'true', :checked => true %> Keep reshuffling once deck is empty
     <%= form.radio_button :loop, 'false' %> Play through deck once
   </p>
+    
+    <%= form.hidden_field :user_id, value: current_user.id %>
  
   <p>
     <%= form.submit %>
