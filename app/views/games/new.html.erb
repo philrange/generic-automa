@@ -1,5 +1,9 @@
 <h1>New Game</h1>
 
+<% if !user_signed_in? %>
+<h2> You need to be logged in to add a game</h2>
+<% else %>
+
 <%= form_with scope: :game, url: games_path,local: true do |form| %>
 
   <% if @game.errors.any? %>
@@ -41,3 +45,5 @@
     <%= form.submit %>
   </p>
 <% end %>
+
+  <% end %>

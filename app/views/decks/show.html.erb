@@ -14,8 +14,6 @@
 
 <%= form_with scope: :card, url: game_deck_cards_path(:deck_id => @deck.id, :game_id => @deck.game_id), local: true do |form| %>
 
-
-
   <p>
     <%= form.label "Card Image" %><br>
     <%= form.file_field :card_image %>

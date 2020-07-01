@@ -10,6 +10,7 @@ class GamesController < ApplicationController
     
     
     def new
+        @game = Game.new
     end
     
     def create
@@ -27,6 +28,6 @@ class GamesController < ApplicationController
      
 private
   def game_params
-    params.require(:game).permit(:title, :text, :loop, :number_of_cards)
+    params.require(:game).permit(:title, :text, :loop, :number_of_cards, user: current_user)
   end
 end

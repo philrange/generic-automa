@@ -15,11 +15,11 @@
  
 <p>
   <strong>Number of cards:</strong>
-  <%= deck_selection.number_of_cards %>
+  <%= deck_selection.number_of_cards_for_display %>
 </p>
 <% end %>
 
-
+<% if userCanEdit(Game.find(@difficulty_mode.game_id)) %>
 
 <h1>New Deck Selection</h1>
 
@@ -54,4 +54,6 @@
   <p>
     <%= form.submit %>
   </p>
+<% end %>
+
 <% end %>

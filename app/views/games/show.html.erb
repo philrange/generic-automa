@@ -28,6 +28,7 @@
 <% end %>
 
 
+<% if userCanEdit(@game) %>
 <h2>Add a deck:</h2>
 <%= form_with(model: [ @game, @game.decks.build ], local: true) do |form| %>
   <p>
@@ -39,6 +40,8 @@
   </p>
 <% end %>
 
+<% end %>
+
 <h2>Difficulty Modes:</h2>
 <% @game.difficulty_modes.each do |difficulty_mode| %>
   <p>
@@ -48,7 +51,7 @@
  
 <% end %>
 
-
+<% if userCanEdit(@game) %>
 <h2>Add a difficulty mode:</h2>
 <%= form_with(model: [ @game, @game.difficulty_modes.build ], local: true) do |form| %>
   <p>
@@ -58,4 +61,5 @@
   <p>
     <%= form.submit %>
   </p>
+<% end %>
 <% end %>
