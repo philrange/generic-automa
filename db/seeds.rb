@@ -26,7 +26,7 @@ DeckSelection.create!(difficulty_mode_id: london_hard.id, deck_id: london_deck1.
 DeckSelection.create!(difficulty_mode_id: london_hard.id, deck_id: london_deck2.id, number_of_cards: 0)
 DeckSelection.create!(difficulty_mode_id: london_hard.id, deck_id: london_deck3.id, number_of_cards: 0)
 
-london_deck1Folder = "app/assets/images/seed/london/deck1"
+london_deck1Folder = File.join(Rails.root, "app/assets/images/seed/london/deck1")
 Dir.foreach(london_deck1Folder) do |filename|
     next if filename == '.' or filename == '..'
     card = london_deck1.cards.new
@@ -34,7 +34,7 @@ Dir.foreach(london_deck1Folder) do |filename|
     card.save
 end
 
-london_deck2Folder = "app/assets/images/seed/london/deck2"
+london_deck2Folder = File.join(Rails.root, "app/assets/images/seed/london/deck2")
 Dir.foreach(london_deck2Folder) do |filename|
     next if filename == '.' or filename == '..'
     card = london_deck2.cards.new
@@ -42,7 +42,7 @@ Dir.foreach(london_deck2Folder) do |filename|
     card.save
 end
 
-london_deck3Folder = "app/assets/images/seed/london/deck3"
+london_deck3Folder = File.join(Rails.root, "app/assets/images/seed/london/deck3")
 Dir.foreach(london_deck3Folder) do |filename|
     next if filename == '.' or filename == '..'
     card = london_deck3.cards.new
