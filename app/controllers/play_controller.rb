@@ -8,6 +8,7 @@ class PlayController < ApplicationController
         
         @cards_for_this_game = []
         
+#        todo - select a subset of these cards based on the number_of_cards set for the game
         @deck_selections.each do |deck_selection|
             number = deck_selection.number_of_cards
             if number == 0

@@ -15,11 +15,50 @@
  */
 
 
-footer { margin-top: 100px; }
-table, td, th { vertical-align: middle; border: none; }
-th { border-bottom: 1px solid #DDD; }
 body { margin: 0; }
+footer { margin-top: 100px; }
+table, td, th { 
+    vertical-align: middle; 
+    border: none; 
+}
+th { 
+    text-transform: uppercase;
+    color: #4A4A4A;
+    background: #eee;
+    empty-cells: hide;
+}
+th, td {
+    padding: 10px;
+}
+tr:nth-child(odd) {background: #fafafa;}
+tr:nth-child(even) {background: #FFF;}
 
+tr:hover {
+    background: #eee
+}
+td {
+    color: dimgray;
+}
+
+.td-link {
+//  display: none;
+     
+  text-transform: uppercase;
+  font-size: small;
+
+}
+tr:hover .td-link {
+//  display: table-cell;
+}
+
+.game-title-td {
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.game-text-td {
+    font-size: small;
+}
 
 .navbar {
   min-height: 38px;

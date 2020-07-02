@@ -2,21 +2,23 @@
  
 <table>
   <tr>
+    <th></th>
     <th>Title</th>
     <th>Text</th>
     <th>Added By</th>
-    <th></th>
   </tr>
  
   <% @games.each do |game| %>
     <tr>
-      <td><%= game.title %></td>
-      <td><%= game.text %></td>
+      <td><%= image_tag 'meeple.png', height: '32', width: '32' %></td>
+      <td class="game-title-td"><%= game.title %></td>
+      <td class="game-text-td"><%= game.text %></td>
       <td><%= game.user.display_name %></td>
-      <td><%= link_to 'Show', game_path(game) %></td>
+      <td class='td-link'><%= link_to 'Show', game_path(game) %>
         <% if userCanEdit(game) %>
-            <td><%= link_to 'Delete', game_path(game), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+             | <%= link_to 'Delete', game_path(game), method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
+          </td>
     </tr>
   <% end %>
 </table>

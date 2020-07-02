@@ -26,12 +26,12 @@
   </p>
  
   <p>
-    <%= form.label :text %><br>
+    <%= form.label :text %> - Description/notes about the solo mode<br>
     <%= form.text_area :text %>
   </p>   
 
   <p>
-    <%= form.label :number_of_cards %> - Will select a subset of the generated deck (Set to 0 to use all cards)<br>
+    <%= form.label :number_of_cards %> - Will select a subset of the generated deck (Set to 0 to use all cards) NOTE: This doesn't do anything yet, so leave it set to 0<br>
     <%= form.number_field :number_of_cards, value: 0 %>
   </p>  
 
