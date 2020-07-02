@@ -8,9 +8,13 @@ class PlayController < ApplicationController
         
         @cards_for_this_game = []
         
-#        todo - get correct number of cards based on deck selection - number_of_cards
         @deck_selections.each do |deck_selection|
-            @cards_for_this_game.push(*deck_selection.deck.cards.sample(deck_selection.number_of_cards))
+            number = deck_selection.number_of_cards
+            if number == 0
+                @cards_for_this_game.push(*deck_selection.deck.cards)
+            else
+                @cards_for_this_game.push(*deck_selection.deck.cards.sample(deck_selection.number_of_cards))
+            end
         end
     end
     
