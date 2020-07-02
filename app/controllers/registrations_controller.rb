@@ -1,7 +1,5 @@
-class RegistrationsController < ApplicationController
+class RegistrationsController < Devise::RegistrationsController
 
-    def new 
-    end
 
 
     private
