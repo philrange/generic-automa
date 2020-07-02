@@ -10,6 +10,7 @@
   <%= @deck.cards.length %>
 </p>
 
+<% if userCanEdit(@deck.game) %>
 <h1>New Card</h1>
 
 <%= form_with scope: :card, url: game_deck_cards_path(:deck_id => @deck.id, :game_id => @deck.game_id), local: true do |form| %>
@@ -22,6 +23,8 @@
   <p>
     <%= form.submit %>
   </p>
+<% end %>
+
 <% end %>
 
 <h2>Cards:</h2>
