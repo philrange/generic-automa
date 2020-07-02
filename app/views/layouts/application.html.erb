@@ -28,15 +28,15 @@
                         <li class="nav-item <%= 'active' if params[:controller] == 'welcome' %>">
                             <a class="nav-link" href="/">Play</a>
                         </li>
-                        <li class="nav-item <%= 'active' if ['games', 'decks', 'difficulty_modes', ''].include? params[:controller] %>">
+                        <li class="nav-item <%= 'active' if (['games', 'decks', 'difficulty_modes', ''].include? params[:controller]) && params[:action] != 'new' %>">
                             <a class="nav-link" href="/games">View Games</a>
                         </li>
                         <li class="nav-item <%= 'active' if params[:controller] == 'pages' %>">
                             <a class="nav-link" href="/pages/info">Info</a>
                         </li>
                         <% if user_signed_in? %>
-                        <li>
-                            <%= link_to 'Add Game', new_game_path, :class => 'navbar-link' %>
+                        <li class="nav-item <%= 'active' if params[:controller] == 'games' && params[:action] == 'new' %>">
+                            <%= link_to 'Add Game', new_game_path, :class => 'nav-link' %>
                         </li>
                         <% end %>
                     </ul>
