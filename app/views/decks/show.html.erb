@@ -28,6 +28,11 @@
 <% @deck.cards.each do |card| %>
   <p>
     <img src="<%=(url_for(card.card_image))%>">
+
+      <% if userCanEdit(@deck.game) %>
+        <br>
+        <%= link_to 'Delete', game_deck_card_path(:game_id => @deck.game_id, :deck_id => @deck.id, :id => card.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
   </p>
 <% end %>
 

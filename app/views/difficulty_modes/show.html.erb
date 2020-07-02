@@ -1,5 +1,6 @@
 <h1>Difficulty Mode</h1>
 
+
 <p>
   <strong>Name:</strong>
   <%= @difficulty_mode.name %>
@@ -16,6 +17,10 @@
 <p>
   <strong>Number of cards:</strong>
   <%= deck_selection.number_of_cards_for_display %>
+        <% if userCanEdit(@difficulty_mode.game) %>
+        <br>
+        <%= link_to 'Delete', game_difficulty_mode_deck_selection_path(:game_id => @difficulty_mode.game_id, :difficulty_mode_id => @difficulty_mode.id, :id => deck_selection.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
 </p>
 <% end %>
 

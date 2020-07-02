@@ -10,6 +10,13 @@ class DeckSelectionsController < ApplicationController
         @deck_selection = DeckSelection.find(params[:id])    
     end
     
+    def destroy
+        @deck_selection = DeckSelection.find(params[:id])
+        @deck_selection.destroy
+        
+        redirect_to game_difficulty_mode_path(@deck_selection.deck.game, @deck_selection.difficulty_mode)
+    end
+    
     private
     def deck_selection_params
       params.require(:deck_selection).permit(:deck_id, :number_of_cards)

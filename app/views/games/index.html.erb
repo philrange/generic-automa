@@ -14,6 +14,9 @@
       <td><%= game.text %></td>
       <td><%= game.user.display_name %></td>
       <td><%= link_to 'Show', game_path(game) %></td>
+        <% if userCanEdit(game) %>
+            <td><%= link_to 'Delete', game_path(game), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
     </tr>
   <% end %>
 </table>

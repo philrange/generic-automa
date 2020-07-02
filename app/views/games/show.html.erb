@@ -1,3 +1,20 @@
+
+
+  <% if flash.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(flash.count, "error") %> prohibited
+        this game from being saved:
+      </h2>
+      <ul>
+        <% flash.each do |type, msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
 <p>
   <strong>Title:</strong>
   <%= @game.title %>
@@ -23,6 +40,9 @@
   <p>
     <strong>Name:</strong>
     <%= link_to deck.name, game_deck_path(:game_id => @game.id, :id => deck.id) %>
+    <% if userCanEdit(@game) %>
+      <%= link_to 'Delete', game_deck_path(:game_id => @game.id, :id => deck.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </p>
  
 <% end %>
@@ -47,7 +67,10 @@
   <p>
     <strong>Name:</strong>
       <%= link_to difficulty_mode.name, game_difficulty_mode_path(:game_id => @game.id, :id => difficulty_mode.id) %>
-  </p>
+      <% if userCanEdit(@game) %>
+        <%= link_to 'Delete', game_difficulty_mode_path(:game_id => @game.id, :id => difficulty_mode.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+</p>
  
 <% end %>
 
