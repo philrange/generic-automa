@@ -27,7 +27,7 @@
 <h2>Cards:</h2>
 <% @deck.cards.each do |card| %>
   <p>
-    <img src="<%=(url_for(card.card_image))%>">
+      <%= image_tag card.card_image %>
 
       <% if userCanEdit(@deck.game) %>
         <br>
