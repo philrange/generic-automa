@@ -1,5 +1,4 @@
 
-
   <% if flash.any? %>
     <div id="error_explanation">
       <h2>
@@ -15,37 +14,61 @@
   <% end %>
 
 
-<p>
-  <strong>Title:</strong>
-  <%= @game.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @game.text %>
-</p> 
-<p>
-    
-  <strong>Loop:</strong>
-  <%= @game.loop %>
-</p> 
+<h2>Game Info</h2>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Text</th>
+        <th>Loop</th>
+        <th>Number of Cards</th>
+    </tr>
 
-<p>
-  <strong>Number of Cards:</strong>
-  <%= @game.number_of_cards == 0 ? "All" : @game.number_of_cards %>
-</p>
+    <tr>
+        <td class="game-title-td">
+          <%= @game.title %>
+        </td>
+
+        <td class="game-text-td">
+          <%= @game.text %>
+        </td> 
+        <td>
+
+          <%= @game.loop %>
+        </td> 
+
+        <td class="number-of-cards-column">
+          <%= @game.number_of_cards == 0 ? "All" : @game.number_of_cards %>
+        </td>
+    </tr>
+</table>
+
 
 <h2>Decks:</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Number of Cards</th>
+    </tr>
+
 <% @game.decks.each do |deck| %>
-  <p>
-    <strong>Name:</strong>
-    <%= link_to deck.name, game_deck_path(:game_id => @game.id, :id => deck.id) %>
-    <% if userCanEdit(@game) %>
-      <%= link_to 'Delete', game_deck_path(:game_id => @game.id, :id => deck.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-  </p>
- 
+    <tr>
+      <td class="game-title-td">
+        <%= deck.name %>
+      </td>      
+      <td class="number-of-cards-column">
+            <%= deck.cards.length %>
+      </td>
+      <td class="td-link">
+        <%= link_to 'Show', game_deck_path(:game_id => @game.id, :id => deck.id) %>
+      </td>
+      <% if userCanEdit(@game) %>
+        <td class="td-link">
+          <%= link_to 'Delete', game_deck_path(:game_id => @game.id, :id => deck.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      <% end %>
+    </tr>
 <% end %>
+</table>
 
 
 <% if userCanEdit(@game) %>
@@ -63,16 +86,26 @@
 <% end %>
 
 <h2>Difficulty Modes:</h2>
+<table>
+    <tr>
+        <th>Name</th>
+    </tr>
 <% @game.difficulty_modes.each do |difficulty_mode| %>
-  <p>
-    <strong>Name:</strong>
-      <%= link_to difficulty_mode.name, game_difficulty_mode_path(:game_id => @game.id, :id => difficulty_mode.id) %>
+    <tr>
+        <td class="game-title-td">
+            <%= difficulty_mode.name %>
+        </td>        
+      <td class="td-link">
+        <%= link_to 'Show', game_difficulty_mode_path(:game_id => @game.id, :id => difficulty_mode.id) %>
+      </td>
       <% if userCanEdit(@game) %>
-        <%= link_to 'Delete', game_difficulty_mode_path(:game_id => @game.id, :id => difficulty_mode.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td class="td-link">
+            <%= link_to 'Delete', game_difficulty_mode_path(:game_id => @game.id, :id => difficulty_mode.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       <% end %>
-</p>
- 
+ </tr>
 <% end %>
+</table>
 
 <% if userCanEdit(@game) %>
 <h2>Add a difficulty mode:</h2>

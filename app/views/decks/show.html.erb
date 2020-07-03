@@ -1,15 +1,23 @@
 <h1>Deck</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @deck.name %>
-</p>
 
-<p>
-  <strong>Number of cards in this deck:</strong>
-  <%= @deck.cards.length %>
-</p>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Number of Cards</th>
+    </tr>
+    <tr>
+        <td class="game-title-td"> 
+          <%= @deck.name %>
+        </td>
 
+        <td class="number-of-cards-column">
+          <%= @deck.cards.length %>
+        </td>
+
+    </tr>
+</table>
+    
 <% if userCanEdit(@deck.game) %>
 <h1>New Card</h1>
 

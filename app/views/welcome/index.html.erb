@@ -1,19 +1,17 @@
 
-<h2>Games List:</h2>
+<h2>Games:</h2>
 
 
 <table>
 
     
 <% @games.each do |game| %>
-  <p>
-        <tr>
-            <td><%= image_tag 'meeple.png', height: '32', width: '32' %></td>
-            <td class="game-title-td"><%= game.title %></td>
-            <td class="game-text-td"><%= game.text %></td>
-            <td class="td-link"><%= link_to 'Play', game_select_difficulty_index_path(:game_id => game.id) %></td>
-        </tr>
-  </p>
+    <tr>
+        <td><%= image_tag 'meeple.png', height: '32', width: '32' %></td>
+        <td class="game-title-td"><%= game.title %></td>
+        <td class="game-text-td"><%= game.text %></td>
+        <td class="td-link"><%= link_to 'Play', game_select_difficulty_index_path(:game_id => game.id) %></td>
+    </tr>
  
 <% end %>
 

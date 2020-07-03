@@ -16,6 +16,11 @@
 
 
 body { margin: 0; }
+
+nav {
+    margin-bottom: 20px;
+}
+
 footer { margin-top: 100px; }
 table, td, th { 
     vertical-align: middle; 
@@ -42,22 +47,23 @@ td {
 
 .td-link {
 //  display: none;
-     
   text-transform: uppercase;
-  font-size: small;
-
 }
 tr:hover .td-link {
 //  display: table-cell;
 }
 
 .game-title-td {
-    font-weight: bolder;
-    font-size: 18px;
+//    font-weight: bolder;
+    font-size: 120%;
 }
 
 .game-text-td {
     font-size: small;
+}
+
+.number-of-cards-column {
+    text-align: right;
 }
 
 #play-container {
@@ -69,7 +75,9 @@ tr:hover .td-link {
     padding: 5px;
 }
 
-
+.content-container > * {
+    padding: 10px;
+}
 
 .navbar {
   min-height: 38px;

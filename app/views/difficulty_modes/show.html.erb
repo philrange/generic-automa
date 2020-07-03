@@ -1,4 +1,4 @@
-<h1>Difficulty Mode</h1>
+<h1>Difficulty Modes</h1>
 
 
 <p>
@@ -7,22 +7,29 @@
 </p>
 
 
-<h2>Deck selections:</h2>
+<table>
+    <tr>
+        <th>Deck</th>
+        <th>Number of Cards</th>
+    </tr>
 <% @difficulty_mode.deck_selections.each do |deck_selection| %>
-<p>
-  <strong>Deck:</strong>
-  <%= deck_selection.deck.name %>
-</p>
- 
-<p>
-  <strong>Number of cards:</strong>
-  <%= deck_selection.number_of_cards_for_display %>
-        <% if userCanEdit(@difficulty_mode.game) %>
-        <br>
-        <%= link_to 'Delete', game_difficulty_mode_deck_selection_path(:game_id => @difficulty_mode.game_id, :difficulty_mode_id => @difficulty_mode.id, :id => deck_selection.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-</p>
+    <tr>
+        <td  class="game-title-td">
+          <%= deck_selection.deck.name %>
+        </td>
+
+        <td class="number-of-cards-column">
+          <%= deck_selection.number_of_cards_for_display %>
+            
+            <% if userCanEdit(@difficulty_mode.game) %>
+                </td><td class="td-link">
+                    <%= link_to 'Delete', game_difficulty_mode_deck_selection_path(:game_id => @difficulty_mode.game_id, :difficulty_mode_id => @difficulty_mode.id, :id => deck_selection.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+        </td>
+    </tr>
 <% end %>
+</table>
+        
 
 <% if userCanEdit(Game.find(@difficulty_mode.game_id)) %>
 
