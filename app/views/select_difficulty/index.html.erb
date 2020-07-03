@@ -2,7 +2,7 @@
 
 <% @game.difficulty_modes.each do |difficulty_mode| %>
   <p>
-      <%= difficulty_mode.name %> - <%= link_to 'Select', game_select_difficulty_play_index_path(:game_id => @game.id, :select_difficulty_id => difficulty_mode.id) %>
+      <%= link_to difficulty_mode.name, game_select_difficulty_play_index_path(:game_id => @game.id, :select_difficulty_id => difficulty_mode.id), class: 'btn btn-success btn-lg btn-block' %>
   </p>
  
 <% end %>

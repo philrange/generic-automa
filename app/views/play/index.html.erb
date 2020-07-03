@@ -15,21 +15,21 @@
 
 <% end %>
 
+<div id="play-container">
 
+    <h1>Playing <%= @game.title %> - Difficulty: <%= @difficulty_mode.name %></h1>
 
-<h1>Playing <%= @game.title %> - Difficulty: <%= @difficulty_mode.name %></h1>
+    <div>
+        Cards in deck: <span id="cards-in-deck"></span> Discarded: <span id="cards-discarded"></span>
+    </div>
 
-<div>
-    Cards in deck: <span id="cards-in-deck"></span> Discarded: <span id="cards-discarded"></span>
+    <div id="card-div"><img id="card" src=""/></div>
+
+    <div id="play-button-div">
+        <button id="draw-card-button" class="btn btn-dark btn-lg">Draw a Card</button>
+    </div>
+
 </div>
-
-<div id="ppp"></div>
-<div id="card-div"><img id="card" src=""/></div>
-
-<button id="draw-card-button">Draw a Card</button>
-
-
-<br>
 
 
 <%= javascript_pack_tag 'cards' %>
